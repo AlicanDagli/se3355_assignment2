@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} Detay</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo">
+            <h2><a href="{{ url_for('home') }}" class="logo-link">tremdyol</a></h2>
+        </div>
+        <div class="search-box">
+            <form action="{{ url_for('search_results') }}" method="GET">
+                <input type="text" name="query" class="search-input" placeholder="Aradığınız ürün, kategori veya markayı yazınız">
+                <button type="submit" class="search-button">Ara</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="product-detail-container">
+        <div class="breadcrumb">
+            <a href="{{ url_for('home') }}">Ana Sayfa</a>
+            <span>{{ product.category }}</span>
+            <span>{{ product.name }}</span>
+        </div>
+
+        <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="Product Image">
+        <div class="product-details">
+            <h1>{{ product.name }}</h1>
+            <p>{{ product.description }}</p>
+            <p class="price">{{ product.price }} TL</p>
+        </div>
+    </div>
+</body>
+</html>
